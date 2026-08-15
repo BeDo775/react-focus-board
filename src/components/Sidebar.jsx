@@ -1,18 +1,19 @@
 import React from 'react';
+import styles from './Sidebar.module.css';
 
 export default function Sidebar({ activeTab, setActiveTab, completedCount, totalCount, progressPercent }) {
   const tabs = ['Overview', 'My Projects'];
 
   return (
-    <div className="sidebar">
-      <h2>FocusBoard</h2>
-      <p className="user-name">Abdelrahman</p>
+    <div className={styles.sidebarContainer}>
+      <h2 className={styles.brandTitle}>FocusBoard</h2>
+      <p className="text-secondary mb-4">Abdelrahman</p>
       
-      <div className="menu">
+      <div className="d-grid gap-2 mb-4">
         {tabs.map((tab) => (
           <button 
             key={tab}
-            className={activeTab === tab ? 'active' : ''} 
+            className={`btn text-start ${activeTab === tab ? 'btn-primary' : 'btn-outline-secondary'}`} 
             onClick={() => setActiveTab(tab)}
           >
             {tab}
@@ -20,12 +21,16 @@ export default function Sidebar({ activeTab, setActiveTab, completedCount, total
         ))}
       </div>
 
-      <div className="progress-card">
-        <h4>Progress</h4>
-        <div className="bar">
-          <div className="fill" style={{ width: `${progressPercent}%` }}></div>
+      <div className="card bg-dark text-light border-secondary p-3">
+        <h6>Progress</h6>
+        <div className="progress mb-2" style={{ height: '8px' }}>
+          <div 
+            className="progress-bar bg-success" 
+            role="progressbar" 
+            style={{ width: `${progressPercent}%` }}
+          ></div>
         </div>
-        <span>{completedCount} / {totalCount} Done</span>
+        <small className="text-muted">{completedCount} / {totalCount} Done</small>
       </div>
     </div>
   );
