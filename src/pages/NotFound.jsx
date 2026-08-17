@@ -1,13 +1,17 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { Compass } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="container text-center text-light mt-5">
-      <h1 className="display-1 text-danger fw-bold">404</h1>
-      <h2>Page Not Found</h2>
-      <p className="text-secondary">The page you are looking for does not exist.</p>
-      <Link to="/" className="btn btn-primary mt-3">Back to Home</Link>
+    <div className="notfound">
+      <div className="notfound-icon">
+        <Compass />
+      </div>
+      <h1 className="notfound-title">404</h1>
+      <p className="notfound-desc">Page not found. The link might be broken or moved.</p>
+      <Link to="/" className="notfound-link">
+        Back to Home
+      </Link>
     </div>
   );
 }
